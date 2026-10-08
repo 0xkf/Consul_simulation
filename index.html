@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>深夜の収支レビュー</title>
+    <meta name="description" content="マネージャーとして、日曜の夜にパートナーから収支と継続を詰められるチャットシミュレーター。フィクションです。" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23c2410c'/><text x='16' y='22' font-size='17' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'>詰</text></svg>" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="top">
+        <div class="brand"><span class="logo">詰</span>深夜の収支レビュー</div>
+        <div class="top-r">
+          <span class="clock num" id="clock">22:30</span>
+          <button type="button" class="tbtn" id="soundBtn" aria-pressed="true">通知音 ON</button>
+        </div>
+      </header>
+
+      <aside class="side">
+        <div class="side-h">チャット</div>
+        <ul id="chatList"></ul>
+      </aside>
+
+      <main class="main">
+        <div class="head">
+          <div class="av" style="background: var(--av-ptr)">黒</div>
+          <div class="who">
+            <b>黒崎 玲司（パートナー）</b>
+            <small><i class="dot"></i>連絡可能</small>
+          </div>
+        </div>
+
+        <section class="meters" aria-label="ステータス">
+          <div class="meter" id="mHp"><span>メンタル</span><div class="bar"><i></i></div><b class="v num">100</b></div>
+          <div class="meter" id="mTrust"><span>信頼</span><div class="bar"><i></i></div><b class="v num">50</b></div>
+          <div class="kpis">
+            <div><small>寝られる時間</small><b class="num" id="sleepLeft">8:30</b></div>
+            <div><small>粗利率</small><b class="num" id="gmV">23%</b></div>
+            <div><small>チーム稼働</small><b class="num" id="utilV">126%</b></div>
+            <div><small>継続確度</small><b class="num" id="contV">C</b></div>
+          </div>
+        </section>
+
+        <div class="log" id="log" aria-live="polite"></div>
+
+        <div class="composer">
+          <div class="chips" id="chips"></div>
+          <form id="form" autocomplete="off">
+            <input id="msg" type="text" placeholder="返信の候補を選ぶか、自由に入力して送信" maxlength="200" disabled />
+            <button id="sendBtn" type="submit" disabled>送信</button>
+          </form>
+        </div>
+      </main>
+    </div>
+
+    <div class="toasts" id="toasts"></div>
+
+    <div class="veil" id="startVeil">
+      <div class="card start">
+        <p class="kicker">日曜 22:30</p>
+        <h1>深夜の収支レビュー</h1>
+        <p class="lead">
+          あなたはマネージャーの桐生。担当する物流会社向けのコスト削減PJ「Orion」は粗利23%、目標35%。
+          明日の朝9時は先方定例、13時は社内の案件レビュー。今夜、パートナーの黒崎から収支と継続を詰められる。
+        </p>
+        <div class="opts">
+          <div>
+            <small>難易度</small>
+            <div class="seg" id="diffSeg">
+              <button type="button" data-v="easy">ぬるめ</button>
+              <button type="button" data-v="normal" class="on">通常</button>
+              <button type="button" data-v="hell">地獄</button>
+            </div>
+          </div>
+          <div>
+            <small>長さ</small>
+            <div class="seg" id="lenSeg">
+              <button type="button" data-v="short">短め（約5分）</button>
+              <button type="button" data-v="normal" class="on">通常（約10分）</button>
+            </div>
+          </div>
+        </div>
+        <ul class="howto">
+          <li>3つの候補から選ぶか、自由に入力して返す。返事が遅いと催促が来る。</li>
+          <li>信頼とメンタル、粗利・稼働・継続確度で結末が変わる。</li>
+          <li>何を言えば信頼が上がるかは、プレイして見つけてください。</li>
+        </ul>
+        <button type="button" class="go" id="startBtn">始める</button>
+        <p class="fine">
+          フィクションです。登場する人物・会社・案件はすべて架空です。現実でやったら普通にパワハラです。
+          つらいときは <a href="https://kokoro.mhlw.go.jp/" target="_blank" rel="noopener">こころの耳（厚生労働省）</a> へ。
+        </p>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
